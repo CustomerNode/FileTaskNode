@@ -70,7 +70,7 @@ The goal: the user double-clicks an icon and lands directly in FileTaskNode with
 The repo includes `launch.bat`. Create a desktop shortcut pointing to it:
 
 ```powershell
-powershell -Command "$repo = '<REPO_PATH>'; $ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut(\"$env:USERPROFILE\Desktop\FileTaskNode.lnk\"); $s.TargetPath = \"$repo\launch.bat\"; $s.WorkingDirectory = \"$repo\"; $s.IconLocation = 'cmd.exe,0'; $s.Save()"
+powershell -Command "$repo = '<REPO_PATH>'; $ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut(\"$env:USERPROFILE\Desktop\FileTaskNode.lnk\"); $s.TargetPath = \"$repo\launch.bat\"; $s.WorkingDirectory = \"$repo\"; $s.IconLocation = \"$repo\assets\filetasknode.ico\"; $s.Save()"
 ```
 
 Replace `<REPO_PATH>` with the actual path where the repo was cloned.
@@ -97,6 +97,7 @@ cat > ~/Desktop/FileTaskNode.desktop << EOF
 [Desktop Entry]
 Name=FileTaskNode
 Exec=bash -c 'cd ~/FileTaskNode && claude'
+Icon=~/FileTaskNode/assets/filetasknode.ico
 Terminal=true
 Type=Application
 EOF
