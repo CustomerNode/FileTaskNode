@@ -83,7 +83,21 @@ Create an Automator app or a simple `.command` file on the Desktop:
 cat > ~/Desktop/FileTaskNode.command << 'EOF'
 #!/bin/bash
 cd ~/Documents/FileTaskNode
-claude
+echo ""
+echo "  FileTaskNode"
+echo "  By CustomerNode LLC (customernode.com)"
+echo "  Powered by Claude Code"
+echo "  ============"
+echo ""
+echo "  1. Start new session"
+echo "  2. Resume previous session"
+echo ""
+read -p "  Choose (1 or 2): " choice
+if [ "$choice" = "2" ]; then
+    claude --resume
+else
+    claude
+fi
 EOF
 chmod +x ~/Desktop/FileTaskNode.command
 ```
@@ -96,7 +110,7 @@ Create a `.desktop` file:
 cat > ~/Desktop/FileTaskNode.desktop << EOF
 [Desktop Entry]
 Name=FileTaskNode
-Exec=bash -c 'cd ~/FileTaskNode && claude'
+Exec=bash -c 'cd ~/FileTaskNode && bash launch.sh'
 Icon=~/FileTaskNode/assets/filetasknode.ico
 Terminal=true
 Type=Application
