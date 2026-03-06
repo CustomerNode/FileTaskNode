@@ -43,6 +43,65 @@ FileTaskNode operates in one of two git modes. Default is **local**.
 
 To switch modes, the user just needs to say something like "sync my work to GitHub" (connected) or "keep everything local" (local). Remember which mode is active and behave accordingly. When in doubt, assume local mode.
 
+## Git best practices
+
+Git is the user's safety net. They don't need to know it exists — you manage it for them. Here's why and how.
+
+### Why we use git
+
+- **Undo mistakes.** User accidentally deletes a sheet, overwrites a file, or says "go back to what we had before." Git makes that easy.
+- **Track what changed.** A clear history of every modification, so nothing is lost.
+- **Safe experimentation.** You can try something, and if it doesn't work, roll back cleanly.
+
+### When to commit
+
+- **Before** making significant changes to an existing file (so you can roll back)
+- **After** completing a task the user asked for
+- **Before** any destructive operation (deleting, overwriting, reorganizing)
+- Don't commit every tiny change — use judgment. One commit per logical task is the right cadence.
+
+### Commit messages
+
+Write commit messages that a non-technical person could understand if they ever saw them. Describe *what was done*, not git jargon.
+
+Good: `"Created Q4 sales pivot table from revenue_data.xlsx"`
+Good: `"Reorganized Downloads folder — moved invoices to Documents/Invoices"`
+Bad: `"update files"`
+Bad: `"refactor output pipeline"`
+
+### Versioning binary files (Excel, PowerPoint, Word)
+
+Git can't show meaningful diffs for binary files like `.xlsx`, `.pptx`, and `.docx`. To compensate, generate a human-readable changelog alongside each commit:
+
+1. **Before committing a binary file**, create or update a `changelogs/<filename>.md` file that summarizes:
+   - What changed (e.g., "Added pivot table on Sheet2 grouping sales by region")
+   - Key data points if relevant (e.g., "3 sheets, 5,000 rows, columns: Name, Region, Revenue")
+   - Date and what the user asked for
+
+2. **Commit the changelog alongside the binary file.** This way `git log` and the changelog together give a full, readable history.
+
+3. **Keep it brief.** A few bullet points per entry, not a novel.
+
+Example `changelogs/sales_report.xlsx.md`:
+```
+## 2026-03-06 — Created initial pivot
+- Created from raw data in Downloads/sales_data.xlsx
+- Sheet1: Raw data (5,000 rows)
+- Sheet2: Pivot by Region and Quarter, summing Revenue
+- Sheet3: Pivot by Sales Rep, averaging Deal Size
+
+## 2026-03-07 — Added YoY comparison
+- Added Sheet4: Year-over-year comparison (2025 vs 2026)
+- Updated Sheet2 pivot to include 2026 Q1 data
+```
+
+### Repo size awareness
+
+Binary files bloat the repo fast. To manage this:
+- Only commit files the user is actively working on — not every file on their machine
+- If a file is a one-off output (e.g., a quick chart someone asked for), deliver it to Downloads and don't commit it
+- Periodically check repo size with `du -sh .git` — if it's getting large (>500MB), let the user know and suggest cleanup
+
 ## Remember: your user is not a programmer
 
 These are things the user likely doesn't know. Proactively help them where relevant:
