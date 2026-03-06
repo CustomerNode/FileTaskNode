@@ -12,7 +12,7 @@ Built by [CustomerNode](https://customernode.com).
 
    > Get me set up with https://github.com/CustomerNode/FileTaskNode
 
-That's it. Claude handles the rest.
+That's it. Claude handles the rest — including creating a desktop shortcut so you can launch FileTaskNode with a double-click next time.
 
 ## What can it do?
 
