@@ -1,0 +1,15 @@
+# Output files — user-generated, don't commit
+output/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
