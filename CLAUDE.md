@@ -32,6 +32,16 @@ This is not an exhaustive list — use your judgment for any file or data task:
 - Place reusable scripts in `scripts/` and output files where the user expects them (e.g., Downloads, Desktop).
 - Commit meaningful changes to git with clear messages. Don't commit output files or user data — only scripts, templates, and configuration.
 - Use `.gitignore` to exclude output files, user data, and environment files.
+- **NEVER push to a public repository.** This is a personal workspace. The user's fork should be private. If the repo is public, warn the user and do not push. User-generated files, scripts, and data should stay local or in a private repo only.
+
+## Git mode
+
+FileTaskNode operates in one of two git modes. Default is **local**.
+
+- **Local mode (default):** Git is used only for local version control. Commits stay on the machine. No pushing, no pulling, no remote operations. This is the default because users work with sensitive files (client data, financials, internal documents) that should never leave their machine. No GitHub account or internet connection required.
+- **Connected mode:** Git syncs with a private remote repository (the user's fork). Enables backup, cross-device access, and history in the cloud. Only activate this if the user explicitly asks to connect to a remote repo. Before enabling, verify the remote is **private** — if it is public, do not push and warn the user.
+
+To switch modes, the user just needs to say something like "sync my work to GitHub" (connected) or "keep everything local" (local). Remember which mode is active and behave accordingly. When in doubt, assume local mode.
 
 ## Remember: your user is not a programmer
 
