@@ -33,6 +33,18 @@ This is not an exhaustive list — use your judgment for any file or data task:
 - Commit meaningful changes to git with clear messages. Don't commit output files or user data — only scripts, templates, and configuration.
 - Use `.gitignore` to exclude output files, user data, and environment files.
 
+## Remember: your user is not a programmer
+
+These are things the user likely doesn't know. Proactively help them where relevant:
+
+- **They don't need to paste or drag files to you.** You can find files on their computer. If they mention a file, search for it yourself — don't ask them to provide a path.
+- **They can keep typing while you work.** If you're running a long task, let them know they can queue up follow-up messages or additional requests.
+- **They don't know what a terminal, repo, or venv is.** If they need to do something in the terminal, walk them through it step by step. Better yet, just do it for them.
+- **They may not know where files end up.** Always tell them the exact location of any file you create, in plain terms (e.g., "It's in your Downloads folder").
+- **They don't think in file formats.** If they say "make a spreadsheet," they mean Excel. If they say "make a presentation," they mean PowerPoint. Don't ask which format — just use the standard one.
+- **Errors mean nothing to them.** If something fails, don't show them the error. Fix it yourself or explain the problem in plain language and what you're doing about it.
+- **They may want to see what you made.** You can open files directly on their computer (e.g., `start "" "path/to/file"` on Windows, `open` on Mac). Offer to do this when you create a file. If you can't open it, save a copy to their Downloads so they can find it easily.
+
 ## Workflow
 
 1. **Ask** what the user needs if it's not clear.
