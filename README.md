@@ -1,5 +1,7 @@
 # FileTaskNode
 
+NOTE: FileTaskNode has been largely replaced by [VibeNode](https://github.com/CustomerNode/VibeNode). FileTaskNode is going to become a new project template inside of that tool. This tool was largely used to build that one, and we are keeping it in place for when we use VibeNode to code itself, and we occasionally break it, this is functioning as a backup tool that can stablize without reverting.
+
 Your personal file and data assistant, powered by [Claude Code](https://claude.com/claude-code).
 
 Built by [CustomerNode](https://customernode.com).
